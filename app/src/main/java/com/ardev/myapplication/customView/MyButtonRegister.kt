@@ -9,10 +9,9 @@ import androidx.appcompat.widget.AppCompatButton
 import androidx.core.content.ContextCompat
 import com.ardev.myapplication.R
 
-class MyButton @JvmOverloads constructor(
+class MyButtonRegister @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null
 ) : AppCompatButton(context, attrs) {
-
     private var txtColor: Int = 0
     private var enabledBackground: Drawable
     private var disabledBackground: Drawable
@@ -29,6 +28,6 @@ class MyButton @JvmOverloads constructor(
         setTextColor(txtColor)
         textSize = 16f
         gravity = Gravity.CENTER
-        text = if (isEnabled) "LOGIN" else "Fill The Form First"
+        text = if (isEnabled) "Register" else "Fill The Form First"
     }
 }

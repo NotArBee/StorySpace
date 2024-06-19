@@ -9,7 +9,7 @@
         android:id="@+id/loginFragment"
         android:name="com.ardev.myapplication.ui.fragment.enterForm.SignInFragment"
         android:label="fragment_login"
-        tools:layout="@layout/fragment_singin" >
+        tools:layout="@layout/fragment_sign_in" >
         <action
             android:id="@+id/action_signInFragment_to_signUpFragment"
             app:destination="@id/signUpFragment" />
@@ -18,5 +18,9 @@
         android:id="@+id/signUpFragment"
         android:name="com.ardev.myapplication.ui.fragment.enterForm.SignUpFragment"
         android:label="fragment_sign_up"
-        tools:layout="@layout/fragment_sign_up" />
+        tools:layout="@layout/fragment_sign_up" >
+        <action
+            android:id="@+id/action_signUpFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
 </navigation>
