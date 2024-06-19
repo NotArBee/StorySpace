@@ -1,4 +1,4 @@
-package com.ardev.myapplication.ui.fragment.enterForm
+package com.ardev.myapplication.ui.fragment.enterForm.signIn
 
 import android.os.Bundle
 import android.view.LayoutInflater
