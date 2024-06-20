@@ -24,7 +24,7 @@ class SplashActivity : AppCompatActivity() {
         Handler().postDelayed({ goToActivity() }, 4000)
     }
 
-    fun goToActivity() {
+    private fun goToActivity() {
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
         finish()

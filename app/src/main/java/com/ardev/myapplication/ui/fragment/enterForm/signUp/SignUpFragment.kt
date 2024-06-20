@@ -1,6 +1,8 @@
 package com.ardev.myapplication.ui.fragment.enterForm.signUp
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +12,9 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
 import com.ardev.myapplication.R
+import com.ardev.myapplication.customView.MyButtonRegister
+import com.ardev.myapplication.customView.MyEditTextEmail
+import com.ardev.myapplication.customView.MyEditTextPassword
 import com.ardev.myapplication.databinding.FragmentSignUpBinding
 
 class SignUpFragment : Fragment() {
@@ -54,8 +59,35 @@ class SignUpFragment : Fragment() {
             )
         }
 
+        binding.etUsername.addTextChangedListener(textWatcher)
+        binding.etEmail.addTextChangedListener(textWatcher)
+        binding.etPassword.addTextChangedListener(textWatcher)
+        setMyButtonEnable()
+
         binding.btnSignIn.setOnClickListener { view ->
             view.findNavController().navigate(R.id.action_signUpFragment_to_loginFragment)
+        }
+    }
+
+    private val textWatcher = object : TextWatcher {
+        override fun afterTextChanged(s: Editable?) {
+            setMyButtonEnable()
+        }
+
+        override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+        override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+    }
+
+    private fun setMyButtonEnable() {
+        binding.apply {
+            val editTextUsername = etUsername.text
+            val editTextEmail = etEmail.text
+            val editTextPassword = etPassword.text
+
+            btnRegister.isEnabled = editTextUsername != null && editTextUsername.toString()
+                .isNotEmpty() && editTextEmail != null && editTextEmail.toString()
+                .isNotEmpty() && editTextPassword != null && editTextPassword.toString().isNotEmpty()
         }
     }
 

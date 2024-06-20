@@ -28,6 +28,6 @@ class MyButtonRegister @JvmOverloads constructor(
         setTextColor(txtColor)
         textSize = 16f
         gravity = Gravity.CENTER
-        text = if (isEnabled) "Register" else "Fill The Form First"
+        text = if (isEnabled) "SIGN UP" else "SIGN UP"
     }
 }
