@@ -12,4 +12,8 @@
     <string name="sign_up">SIGN UP</string>
     <string name="insert_username">Insert Username</string>
     <string name="already_have_an_account_sign_in">Already Have An Account? Sign In</string>
+    <string name="title_activity_container">ContainerActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
 </resources>

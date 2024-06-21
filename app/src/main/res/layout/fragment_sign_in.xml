@@ -20,11 +20,12 @@
             android:layout_marginTop="8dp"
             android:text="@string/dont_have_an_account_sign_up"
             android:textColor="@color/md_theme_onPrimaryContainer"
-            android:textSize="12dp"
+            android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_login" />
+            app:layout_constraintTop_toBottomOf="@+id/btn_login"
+            tools:ignore="TextSizeCheck" />
 
         <TextView
             android:id="@+id/textView2"
