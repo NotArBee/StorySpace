@@ -2,6 +2,7 @@ package com.ardev.myapplication.data.retrofit
 
 import com.ardev.myapplication.data.response.DetailStoryResponse
 import com.ardev.myapplication.data.response.LoginResponse
+import com.ardev.myapplication.data.response.NewStoryResponse
 import com.ardev.myapplication.data.response.RegisterResponse
 import com.ardev.myapplication.data.response.StoryResponse
 import okhttp3.MultipartBody
@@ -46,10 +47,10 @@ interface ApiService {
     @Multipart
     @POST("/stories")
     fun uploadStories(
-        @Part("description") description: RequestBody,
         @Part photo: MultipartBody.Part,
+        @Part("description") description: RequestBody,
         @Part("lat") lat: RequestBody? = null,
         @Part("lon") lon: RequestBody? = null,
         @Header("Authorization") token: String
-    )
+    ) : NewStoryResponse
 }
