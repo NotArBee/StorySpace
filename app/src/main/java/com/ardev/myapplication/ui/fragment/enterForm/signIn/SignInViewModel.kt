@@ -5,6 +5,7 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import com.ardev.myapplication.data.response.LoginResponse
 import com.ardev.myapplication.data.response.LoginResult
@@ -58,6 +59,10 @@ class SignInViewModel(private val userPreferences: UserPreferences) : ViewModel(
         viewModelScope.launch {
             userPreferences.saveUserData(loginResult)
         }
+    }
+
+    fun getUserData() : LiveData<LoginResult?>{
+        return userPreferences.getUserData().asLiveData()
     }
 
     companion object {

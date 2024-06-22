@@ -9,7 +9,6 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
 import com.ardev.myapplication.R
 import com.ardev.myapplication.databinding.FragmentSignInBinding
@@ -30,14 +29,13 @@ class SignInFragment : Fragment() {
     ): View {
         // Inflate the layout for this fragment
         _binding = FragmentSignInBinding.inflate(inflater, container, false)
-        val view = binding.root
-        return view
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.isSignInSuccessful.observe(viewLifecycleOwner, Observer { isSignInSuccessful ->
+        viewModel.isSignInSuccessful.observe(viewLifecycleOwner) { isSignInSuccessful ->
             if (isSignInSuccessful) {
                 Toast.makeText(
                     requireContext(),
@@ -52,15 +50,11 @@ class SignInFragment : Fragment() {
                     Toast.LENGTH_SHORT
                 ).show()
             }
-        })
+        }
 
-        viewModel.isLoading.observe(viewLifecycleOwner, Observer { isLoading ->
-            if (isLoading) {
-                binding.progressOverlay.visibility = View.VISIBLE
-            } else {
-                binding.progressOverlay.visibility = View.GONE
-            }
-        })
+        viewModel.isLoading.observe(viewLifecycleOwner) { isLoading ->
+            binding.progressOverlay.visibility = if (isLoading) View.VISIBLE else View.GONE
+        }
 
         binding.btnLogin.setOnClickListener {
             viewModel.signIn(
@@ -99,8 +93,8 @@ class SignInFragment : Fragment() {
         override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
+    override fun onDestroyView() {
+        super.onDestroyView()
         _binding = null
     }
 }

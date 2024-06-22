@@ -45,4 +45,13 @@ class UserPreferences private constructor(private val dataStore: DataStore<Prefe
             }
         }
     }
+
+    suspend fun clearUserData() {
+        dataStore.edit { preferences ->
+            preferences.remove(USER_ID_KEY)
+            preferences.remove(NAME_KEY)
+            preferences.remove(TOKEN_KEY)
+            preferences.clear()
+        }
+    }
 }
