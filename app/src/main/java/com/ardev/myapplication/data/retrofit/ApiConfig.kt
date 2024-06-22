@@ -8,7 +8,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class ApiConfig {
     companion object {
-        fun getApiService():  ApiService {
+        fun getApiService(): ApiService {
             val gson = GsonBuilder()
                 .serializeNulls()
                 .serializeSpecialFloatingPointValues()

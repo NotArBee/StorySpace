@@ -38,8 +38,11 @@ class SignUpFragment : Fragment() {
             if (isSuccess) {
                 Toast.makeText(requireContext(), "Sign Up Successful", Toast.LENGTH_SHORT).show()
             } else {
-                Toast.makeText(requireContext(), "Sign Up Failed", Toast.LENGTH_SHORT).show()
-            }
+                viewModel.errorMessage.observe(viewLifecycleOwner, Observer { errorMessage ->
+                    errorMessage?.let {
+                        Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
+                    }
+                })            }
             binding.progressOverlay.visibility = View.GONE
         })
 
