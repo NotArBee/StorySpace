@@ -8,7 +8,7 @@ import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.ardev.myapplication.data.response.ListStoryItem
 import com.ardev.myapplication.databinding.StoryCardBinding
-import com.ardev.myapplication.ui.DetailStoryActivity
+import com.ardev.myapplication.ui.activity.detailActivity.DetailStoryActivity
 import com.bumptech.glide.Glide
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter

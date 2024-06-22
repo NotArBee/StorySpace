@@ -1,4 +1,4 @@
-package com.ardev.myapplication.ui
+package com.ardev.myapplication.ui.activity.detailActivity
 
 import android.app.Application
 import android.util.Log

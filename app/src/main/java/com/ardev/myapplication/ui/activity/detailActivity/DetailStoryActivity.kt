@@ -1,14 +1,12 @@
-package com.ardev.myapplication.ui
+package com.ardev.myapplication.ui.activity.detailActivity
 
 import android.os.Build
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.ViewModelProvider
 import com.ardev.myapplication.databinding.ActivityDetailStoryBinding
+import com.ardev.myapplication.ui.DetailStoryViewModelFactory
 import com.bumptech.glide.Glide
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
