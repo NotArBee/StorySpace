@@ -36,13 +36,18 @@ class SignUpFragment : Fragment() {
 
         viewModel.isSignUpSuccessful.observe(viewLifecycleOwner, Observer { isSuccess ->
             if (isSuccess) {
-                Toast.makeText(requireContext(), "Sign Up Successful", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    requireContext(),
+                    "Sign Up Successful, Now You Can Sign IN",
+                    Toast.LENGTH_SHORT
+                ).show()
             } else {
                 viewModel.errorMessage.observe(viewLifecycleOwner, Observer { errorMessage ->
                     errorMessage?.let {
                         Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
                     }
-                })            }
+                })
+            }
             binding.progressOverlay.visibility = View.GONE
         })
 
@@ -90,7 +95,8 @@ class SignUpFragment : Fragment() {
 
             btnRegister.isEnabled = editTextUsername != null && editTextUsername.toString()
                 .isNotEmpty() && editTextEmail != null && editTextEmail.toString()
-                .isNotEmpty() && editTextPassword != null && editTextPassword.toString().isNotEmpty()
+                .isNotEmpty() && editTextPassword != null && editTextPassword.toString()
+                .isNotEmpty()
         }
     }
 

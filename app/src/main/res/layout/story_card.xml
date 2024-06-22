@@ -17,6 +17,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
+            android:textSize="20sp"
             tools:text="Arya Putra"
             android:textAppearance="?attr/textAppearanceTitleMedium"
             android:textColor="?android:attr/textColorSecondary"
@@ -26,7 +27,6 @@
             android:id="@+id/iv_photo"
             android:layout_width="match_parent"
             android:layout_height="194dp"
-            android:layout_marginTop="8dp"
             app:srcCompat="@drawable/icon_person"
             android:scaleType="centerCrop"
             android:contentDescription="@string/story_photo"
@@ -44,8 +44,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 tools:text="Perkenalkan nama saya adalah Muhammad Dani Arya Putra"
-                android:textAppearance="?attr/textAppearanceBodyMedium"
+                android:textAppearance="?attr/textAppearanceBodyLarge"
                 />
+
+            <TextView
+                android:id="@+id/tv_created_at"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                tools:text="2024-06-22"
+                android:textAppearance="?attr/textAppearanceCaption"
+                android:textColor="?android:attr/textColorSecondary"
+                android:layout_gravity="end" />
 
         </LinearLayout>
     </LinearLayout>

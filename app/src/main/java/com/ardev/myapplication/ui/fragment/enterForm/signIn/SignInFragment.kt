@@ -39,7 +39,7 @@ class SignInFragment : Fragment() {
             if (isSignInSuccessful) {
                 Toast.makeText(
                     requireContext(),
-                    "Sign in successful. Now you can sign in",
+                    "Sign in successful",
                     Toast.LENGTH_SHORT
                 ).show()
                 view.findNavController().navigate(R.id.action_loginFragment_to_homeFragment)

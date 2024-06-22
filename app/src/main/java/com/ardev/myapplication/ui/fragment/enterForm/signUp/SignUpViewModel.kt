@@ -1,5 +1,6 @@
 package com.ardev.myapplication.ui.fragment.enterForm.signUp
 
+import UserPreferences
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -27,6 +28,8 @@ class SignUpViewModel : ViewModel() {
     private val _errorMessage = MutableLiveData<String?>()
     val errorMessage: MutableLiveData<String?> = _errorMessage
 
+    val userPreferences = UserPreferences
+
     fun signUp(name: String, email: String, password: String) {
         _isLoading.value = true
         val client = ApiConfig.getApiService().register(name, email, password)
@@ -39,6 +42,7 @@ class SignUpViewModel : ViewModel() {
                 if (response.isSuccessful) {
                     _signUpResult.value = response.body()
                     Log.d(TAG, "SignUp successful")
+                    Log.d(TAG, "Response: ${response.body()}")
                     _isSignUpSuccessful.value = true
                 } else {
                     response.errorBody()?.let {
