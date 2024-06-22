@@ -1,5 +1,7 @@
 package com.ardev.myapplication.ui.fragment.enterForm.signUp
 
+import android.animation.AnimatorSet
+import android.animation.ObjectAnimator
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -74,6 +76,19 @@ class SignUpFragment : Fragment() {
 
         binding.btnSignIn.setOnClickListener { view ->
             view.findNavController().navigate(R.id.action_signUpFragment_to_loginFragment)
+        }
+
+        playAnimation()
+    }
+
+    private fun playAnimation() {
+        val etUsername = ObjectAnimator.ofFloat(binding.etUsername, View.ALPHA, 1f).setDuration(300)
+        val etEmail = ObjectAnimator.ofFloat(binding.etEmail, View.ALPHA, 1f).setDuration(300)
+        val etPassword = ObjectAnimator.ofFloat(binding.etPassword, View.ALPHA, 1f).setDuration(300)
+
+        AnimatorSet().apply {
+            playSequentially(etUsername, etEmail, etPassword)
+            start()
         }
     }
 
