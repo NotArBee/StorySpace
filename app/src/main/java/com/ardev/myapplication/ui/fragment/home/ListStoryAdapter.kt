@@ -1,5 +1,6 @@
 package com.ardev.myapplication.ui.fragment.home
 
+import android.content.Intent
 import android.os.Build
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -7,12 +8,14 @@ import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.ardev.myapplication.data.response.ListStoryItem
 import com.ardev.myapplication.databinding.StoryCardBinding
+import com.ardev.myapplication.ui.DetailStoryActivity
 import com.bumptech.glide.Glide
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
 class ListStoryAdapter(private val listStory: List<ListStoryItem>) :
     RecyclerView.Adapter<ListStoryAdapter.ListViewHolder>() {
+
     inner class ListViewHolder(val binding: StoryCardBinding) : RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
@@ -38,7 +41,13 @@ class ListStoryAdapter(private val listStory: List<ListStoryItem>) :
             Glide.with(holder.itemView.context)
                 .load(story.photoUrl)
                 .into(ivPhoto)
+
+            // Set click listener using itemView
+            holder.itemView.setOnClickListener {
+                val intent = Intent(holder.itemView.context, DetailStoryActivity::class.java)
+                intent.putExtra(DetailStoryActivity.EXTRA_ID, story.id)
+                holder.itemView.context.startActivity(intent)
+            }
         }
     }
-
 }
