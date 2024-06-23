@@ -8,6 +8,7 @@ import com.ardev.myapplication.data.response.StoryResponse
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Call
+import retrofit2.Response
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
@@ -34,10 +35,12 @@ interface ApiService {
         @Field("password") password: String
     ): Call<LoginResponse>
 
-    @GET("stories")
-    fun getStories(
-        @Header("Authorization") token: String
-    ): Call<StoryResponse>
+        @GET("stories")
+        suspend fun getStories(
+            @Header("Authorization") token: String,
+            @Query("page") page: Int,
+            @Query("size") size: Int
+        ): Response<StoryResponse>
 
     @GET("stories/{id}")
     fun getDetailStories(

@@ -37,4 +37,5 @@
     <string name="fab_maps_activity">FAB Maps Activity</string>
     <string name="camera">Camera</string>
     <string name="upload_story">Upload Story</string>
+    <string name="retry">Retry</string>
 </resources>

@@ -5,20 +5,22 @@ import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
-import android.view.Menu
-import android.view.MenuInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
+import androidx.lifecycle.lifecycleScope
+import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ardev.myapplication.R
+import com.ardev.myapplication.data.paging.StoryLoadStateAdapter
 import com.ardev.myapplication.databinding.FragmentHomeBinding
 import com.ardev.myapplication.ui.MainActivity
 import com.ardev.myapplication.ui.activity.maps.MapsActivity
 import com.ardev.myapplication.ui.activity.postActivity.PostStoryActivity
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dataStore
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
 class HomeFragment : Fragment() {
@@ -26,7 +28,7 @@ class HomeFragment : Fragment() {
     private val binding get() = _binding!!
     private val homeViewModel: HomeFragmentViewModel by viewModels()
 
-    private lateinit var listStoryAdapter: ListStoryAdapter
+    private lateinit var storyAdapter: StoryPagingAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,28 +41,37 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        listStoryAdapter = ListStoryAdapter(emptyList())
+        storyAdapter = StoryPagingAdapter()
         binding.rvStories.layoutManager = LinearLayoutManager(requireActivity())
-        binding.rvStories.adapter = listStoryAdapter
+        binding.rvStories.adapter = storyAdapter.withLoadStateFooter(
+            footer = StoryLoadStateAdapter { storyAdapter.retry() }
+        )
 
         homeViewModel.userData.observe(viewLifecycleOwner) { loginResult ->
             loginResult?.let {
                 val token = loginResult.token
-                homeViewModel.getStories("Bearer $token")
+                lifecycleScope.launch {
+                    homeViewModel.getStories(token).collectLatest {
+                        storyAdapter.submitData(it)
+                    }
+                }
             }
         }
 
-        homeViewModel.isLoading.observe(viewLifecycleOwner) {
-            showLoading(it)
-        }
-
-        homeViewModel.story.observe(viewLifecycleOwner, Observer { stories ->
-            stories?.let {
-                Log.d(TAG, "Stories Updated: $stories")
-                listStoryAdapter = ListStoryAdapter(stories)
-                binding.rvStories.adapter = listStoryAdapter
+        storyAdapter.addLoadStateListener { loadState ->
+            if (loadState.refresh is LoadState.Loading) {
+                showLoading(true)
+            } else {
+                showLoading(false)
+                val errorState = loadState.source.append as? LoadState.Error
+                    ?: loadState.source.prepend as? LoadState.Error
+                    ?: loadState.append as? LoadState.Error
+                    ?: loadState.prepend as? LoadState.Error
+                errorState?.let {
+                    Log.e(TAG, "LoadState Error: ${it.error}")
+                }
             }
-        })
+        }
 
         binding.fabAddStory.setOnClickListener {
             val intent = Intent(requireActivity(), PostStoryActivity::class.java)
@@ -86,7 +97,6 @@ class HomeFragment : Fragment() {
                         startActivity(intent)
                         requireActivity().finish()
                     }
-
                 }
                 .show()
         }
@@ -95,13 +105,6 @@ class HomeFragment : Fragment() {
             val intent = Intent(requireActivity(), MapsActivity::class.java)
             startActivity(intent)
         }
-    }
-
-    @Deprecated("Deprecated in Java")
-    @Suppress("DEPRECATION")
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.menu, menu)
-        super.onCreateOptionsMenu(menu, inflater)
     }
 
     private fun showLoading(isLoading: Boolean) {
