@@ -8,6 +8,9 @@
     <string name="network_error">Network Error</string>
     <string name="unknown_error">Unknown Error</string>
     <string name="upload_success">Success Upload Your Story</string>
+    <string name="logout_message">Are you sure you want to logout?</string>
+    <string name="cancel">Cancel</string>
+    <string name="sure">Sure</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -27,4 +30,7 @@
     <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
+    <string name="logout">Logout</string>
+    <string name="refresh_home">refresh home</string>
+    <string name="post_story_activity">Post Story Activity</string>
 </resources>

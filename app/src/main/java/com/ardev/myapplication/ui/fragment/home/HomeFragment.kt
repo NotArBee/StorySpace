@@ -10,8 +10,13 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.ardev.myapplication.R
 import com.ardev.myapplication.databinding.FragmentHomeBinding
+import com.ardev.myapplication.ui.MainActivity
 import com.ardev.myapplication.ui.activity.postActivity.PostStoryActivity
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import dataStore
+import kotlinx.coroutines.runBlocking
 
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
@@ -57,6 +62,30 @@ class HomeFragment : Fragment() {
         binding.fabAddStory.setOnClickListener {
             val intent = Intent(requireActivity(), PostStoryActivity::class.java)
             startActivity(intent)
+        }
+
+        binding.fabLogout.setOnClickListener {
+            MaterialAlertDialogBuilder(requireContext())
+                .setTitle(resources.getString(R.string.logout))
+                .setMessage(resources.getString(R.string.logout_message))
+                .setNegativeButton(resources.getString(R.string.cancel)) { dialog, _ ->
+                    dialog.dismiss()
+                }
+                .setPositiveButton(resources.getString(R.string.sure)) { dialog, _ ->
+                    runBlocking {
+                        val mUserPreferences =
+                            UserPreferences.getInstance(requireActivity().dataStore)
+                        mUserPreferences.clearUserData()
+
+                        val intent = Intent(requireActivity(), MainActivity::class.java)
+                        intent.flags =
+                            Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                        startActivity(intent)
+                        requireActivity().finish()
+                    }
+
+                }
+                .show()
         }
     }
 
