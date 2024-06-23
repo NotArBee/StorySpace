@@ -45,12 +45,12 @@ interface ApiService {
     ): Call<DetailStoryResponse>
 
     @Multipart
-    @POST("/stories")
-    fun uploadStories(
-        @Part photo: MultipartBody.Part,
+    @POST("stories")
+    suspend fun uploadStories(
         @Part("description") description: RequestBody,
-        @Part("lat") lat: RequestBody? = null,
-        @Part("lon") lon: RequestBody? = null,
+        @Part photo: MultipartBody.Part,
+        @Part("lat") lat: Float? = null,
+        @Part("lon") lon: Float? = null,
         @Header("Authorization") token: String
     ) : NewStoryResponse
 }

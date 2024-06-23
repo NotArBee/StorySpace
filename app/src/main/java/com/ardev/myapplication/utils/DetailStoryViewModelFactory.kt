@@ -8,12 +8,14 @@ import com.ardev.myapplication.ui.activity.postActivity.PostStoryActivityViewMod
 
 class DetailStoryViewModelFactory(private val application: Application) : ViewModelProvider.NewInstanceFactory() {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        return if (modelClass.isAssignableFrom(DetailStoryViewModel::class.java)) {
-            DetailStoryViewModel(application) as T
-        }else if (modelClass.isAssignableFrom(PostStoryActivityViewModel::class.java)) {
-            PostStoryActivityViewModel(application) as T
-        } else {
-            throw IllegalArgumentException("Unknown ViewModel class")
+        return when {
+            modelClass.isAssignableFrom(DetailStoryViewModel::class.java) -> {
+                DetailStoryViewModel(application) as T
+            }
+            modelClass.isAssignableFrom(PostStoryActivityViewModel::class.java) -> {
+                PostStoryActivityViewModel(application) as T
+            }
+            else -> throw IllegalArgumentException("Unknown ViewModel class")
         }
     }
 }
