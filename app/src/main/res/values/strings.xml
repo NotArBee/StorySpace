@@ -7,6 +7,7 @@
     <string name="empty_description_warning">Please Fill Description</string>
     <string name="network_error">Network Error</string>
     <string name="unknown_error">Unknown Error</string>
+    <string name="upload_success">Success Upload Your Story</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

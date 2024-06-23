@@ -31,20 +31,5 @@
         android:name="com.ardev.myapplication.ui.fragment.home.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home">
-        <action
-            android:id="@+id/action_homeFragment_to_detailStoryFragment"
-            app:destination="@id/detailStoryFragment">
-        </action>
     </fragment>
-    <fragment
-        android:id="@+id/detailStoryFragment"
-        android:name="com.ardev.myapplication.ui.fragment.home.detailStory.DetailStoryFragment"
-        android:label="fragment_detail_story"
-        tools:layout="@layout/fragment_detail_story">
-        <argument
-            android:name="idStory"
-            app:argType="string"
-            android:defaultValue="default id" />
-    </fragment>
-
 </navigation>
