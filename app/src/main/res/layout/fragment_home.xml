@@ -53,22 +53,34 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
-        android:layout_margin="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="100dp"
         android:contentDescription="@string/post_story_activity"
         app:iconTint="#fff"
         android:src="@drawable/icon_up_story"/>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab_logout"
-            android:backgroundTint="@color/md_theme_error"
+            android:backgroundTint="@color/md_theme_primaryContainer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"
-            android:layout_marginBottom="100dp"
-            android:layout_marginRight="24dp"
+            android:layout_margin="24dp"
             android:contentDescription="@string/logout"
             app:iconTint="#fff"
             android:src="@drawable/icon_logout"/>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_maps"
+            android:backgroundTint="@color/md_theme_primaryContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_marginBottom="175dp"
+            android:layout_marginEnd="24dp"
+            android:contentDescription="@string/fab_maps_activity"
+            app:iconTint="#fff"
+            android:src="@drawable/icon_map"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

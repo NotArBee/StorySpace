@@ -10,4 +10,5 @@ plugins {
     alias(libs.plugins.jetbrainsKotlinAndroid) apply false
     alias(libs.plugins.androidLibrary) apply false
     id("androidx.navigation.safeargs.kotlin") version "2.5.1" apply false
+    alias(libs.plugins.googleAndroidLibrariesMapsplatformSecretsGradlePlugin) apply false
 }

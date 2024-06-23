@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
@@ -13,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.ardev.myapplication.R
 import com.ardev.myapplication.databinding.FragmentHomeBinding
 import com.ardev.myapplication.ui.MainActivity
+import com.ardev.myapplication.ui.activity.maps.MapsActivity
 import com.ardev.myapplication.ui.activity.postActivity.PostStoryActivity
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dataStore
@@ -87,6 +90,18 @@ class HomeFragment : Fragment() {
                 }
                 .show()
         }
+
+        binding.fabMaps.setOnClickListener {
+            val intent = Intent(requireActivity(), MapsActivity::class.java)
+            startActivity(intent)
+        }
+    }
+
+    @Deprecated("Deprecated in Java")
+    @Suppress("DEPRECATION")
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.menu, menu)
+        super.onCreateOptionsMenu(menu, inflater)
     }
 
     private fun showLoading(isLoading: Boolean) {

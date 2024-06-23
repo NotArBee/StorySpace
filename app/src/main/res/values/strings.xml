@@ -33,4 +33,8 @@
     <string name="logout">Logout</string>
     <string name="refresh_home">refresh home</string>
     <string name="post_story_activity">Post Story Activity</string>
+    <string name="title_activity_maps">MapsActivity</string>
+    <string name="fab_maps_activity">FAB Maps Activity</string>
+    <string name="camera">Camera</string>
+    <string name="upload_story">Upload Story</string>
 </resources>
