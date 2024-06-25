@@ -43,6 +43,7 @@
                 android:id="@+id/tv_description"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:maxLines="5"
                 tools:text="Perkenalkan nama saya adalah Muhammad Dani Arya Putra"
                 android:textAppearance="?attr/textAppearanceBodyLarge"
                 />

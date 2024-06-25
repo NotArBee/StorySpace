@@ -16,7 +16,7 @@ import com.ardev.myapplication.data.retrofit.ApiService
 import dataStore
 import kotlinx.coroutines.flow.Flow
 
-class HomeFragmentViewModel(application: Application, private val apiService: ApiService) : AndroidViewModel(application) {
+class HomeFragmentViewModel(application: Application) : AndroidViewModel(application) {
     private val userPreferences = UserPreferences.getInstance(application.dataStore)
     val userData = userPreferences.getUserData().asLiveData()
 
