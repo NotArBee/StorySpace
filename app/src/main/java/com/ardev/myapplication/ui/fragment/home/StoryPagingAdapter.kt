@@ -1,5 +1,6 @@
 package com.ardev.myapplication.ui.fragment.home
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.LoadStateAdapter
@@ -8,6 +9,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.ardev.myapplication.data.response.ListStoryItem
 import com.ardev.myapplication.databinding.StoryCardBinding
+import com.ardev.myapplication.ui.activity.detailActivity.DetailStoryActivity
 import com.bumptech.glide.Glide
 
 class StoryPagingAdapter : PagingDataAdapter<ListStoryItem, StoryPagingAdapter.ListViewHolder>(DIFF_CALLBACK) {
@@ -30,9 +32,10 @@ class StoryPagingAdapter : PagingDataAdapter<ListStoryItem, StoryPagingAdapter.L
                     .load(story.photoUrl)
                     .into(ivPhoto)
 
-                // Set click listener using itemView
                 holder.itemView.setOnClickListener {
-                    // Handle item click
+                    val intent = Intent(holder.itemView.context, DetailStoryActivity::class.java)
+                    intent.putExtra(DetailStoryActivity.EXTRA_ID, story.id)
+                    holder.itemView.context.startActivity(intent)
                 }
             }
         }
