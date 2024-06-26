@@ -1,41 +1,23 @@
 <resources>
-    <string name="app_name">StorySpace</string>
-    <string name="app_slogan">"Your Stories, Our Space"</string>
-    <string name="sign_in">SIGN IN</string>
-    <string name="from_ar">From\nAR</string>
-    <string name="empty_image_warning">No Image Selected</string>
-    <string name="empty_description_warning">Please Fill Description</string>
-    <string name="network_error">Network Error</string>
-    <string name="unknown_error">Unknown Error</string>
-    <string name="upload_success">Success Upload Your Story</string>
-    <string name="logout_message">Are you sure you want to logout?</string>
-    <string name="cancel">Cancel</string>
-    <string name="sure">Sure</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="insert_password">Insert Password</string>
-    <string name="insert_email">Insert Email</string>
-    <string name="dont_have_an_account_sign_up">Dont Have An Account? Sign Up</string>
-    <string name="sign_up">SIGN UP</string>
-    <string name="insert_username">Insert Username</string>
-    <string name="already_have_an_account_sign_in">Already Have An Account? Sign In</string>
-    <string name="title_activity_container">ContainerActivity</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
-    <string name="story_photo">Story Photo</string>
-    <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
-    <string name="logout">Logout</string>
-    <string name="refresh_home">refresh home</string>
-    <string name="post_story_activity">Post Story Activity</string>
-    <string name="title_activity_maps">MapsActivity</string>
-    <string name="fab_maps_activity">FAB Maps Activity</string>
-    <string name="camera">Camera</string>
+    <string name="app_name">StoryApp</string>
+    <string name="story_image">Story Image</string>
+    <string name="deskripsi">Deskripsi</string>
+    <string name="sign_in">Sign In</string>
+    <string name="masukan_email">Masukan Email</string>
+    <string name="masukan_password">Masukan Password</string>
+    <string name="belum_punya_akun">Belum Punya Akun?</string>
+    <string name="daftar">Daftar</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="masukkan_username">Masukkan Username</string>
+    <string name="masuk">Masuk</string>
     <string name="upload_story">Upload Story</string>
+    <string name="masukkan_deskripsi">Masukkan Deskripsi</string>
+    <string name="camera">Camera</string>
+    <string name="stories_picture">Stories Picture</string>
+    <string name="gallery">Gallery</string>
     <string name="retry">Retry</string>
+    <string name="logout">Logout</string>
+    <string name="maps">Maps</string>
+    <string name="photo_story">Photo Story</string>
+
 </resources>

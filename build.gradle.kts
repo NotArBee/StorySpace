@@ -11,4 +11,5 @@ plugins {
     alias(libs.plugins.androidLibrary) apply false
     id("androidx.navigation.safeargs.kotlin") version "2.5.1" apply false
     alias(libs.plugins.googleAndroidLibrariesMapsplatformSecretsGradlePlugin) apply false
+    id("com.google.devtools.ksp") version "1.9.0-1.0.13" apply false
 }

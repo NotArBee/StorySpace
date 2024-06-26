@@ -24,9 +24,15 @@ lifecycleRuntimeKtx = "2.6.1"
 googleAndroidLibrariesMapsplatformSecretsGradlePlugin = "2.0.1"
 playServicesMaps = "18.2.0"
 pagingRuntimeKtx = "3.1.0"
+coreKtxVersion = "1.5.0"
+roomCompiler = "2.6.1"
+roomRuntime = "2.5.2"
+roomKtx = "2.6.1"
+securityCrypto = "1.1.0-alpha06"
 mockitoCore = "5.6.0"
 mockitoInline = "5.2.0"
-coreKtxVersion = "1.5.0"
+coreTesting = "2.2.0"
+cameraxVersion = "1.2.3"
 
 
 
@@ -55,9 +61,17 @@ material-v130 = { module = "com.google.android.material:material", version.ref =
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
 play-services-maps = { group = "com.google.android.gms", name = "play-services-maps", version.ref = "playServicesMaps" }
 androidx-paging-runtime-ktx = { module = "androidx.paging:paging-runtime-ktx", version.ref = "pagingRuntimeKtx" }
+core-ktx = { group = "androidx.test", name = "core-ktx", version.ref = "coreKtxVersion" }
+room-compiler = { module = "androidx.room:room-compiler", version.ref = "roomCompiler" }
 mockito-core = { module = "org.mockito:mockito-core", version.ref = "mockitoCore" }
 mockito-inline = { module = "org.mockito:mockito-inline", version.ref = "mockitoInline" }
-core-ktx = { group = "androidx.test", name = "core-ktx", version.ref = "coreKtxVersion" }
+androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "roomRuntime" }
+androidx-room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "roomKtx" }
+androidx-security-crypto = { group = "androidx.security", name = "security-crypto", version.ref = "securityCrypto" }
+androidx-core-testing = { module = "androidx.arch.core:core-testing", version.ref = "coreTesting" }
+androidx-camera-camera2 = { module = "androidx.camera:camera-camera2", version.ref = "cameraxVersion" }
+camera-lifecycle = { module = "androidx.camera:camera-lifecycle", version.ref = "cameraxVersion" }
+camera-view = { module = "androidx.camera:camera-view", version.ref = "cameraxVersion" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

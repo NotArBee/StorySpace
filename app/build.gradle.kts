@@ -4,7 +4,7 @@ plugins {
     id("kotlin-parcelize")
     id("androidx.navigation.safeargs")
     alias(libs.plugins.googleAndroidLibrariesMapsplatformSecretsGradlePlugin)
-    id("de.mannodermaus.android-junit5") version "1.10.0.0"
+    id("com.google.devtools.ksp")
 }
 
 android {
@@ -31,11 +31,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "17"
     }
     buildFeatures {
         viewBinding = true
@@ -51,9 +51,8 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
     implementation(libs.play.services.maps)
     implementation(libs.core.ktx)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
+    implementation(libs.androidx.room.ktx)
+    implementation(libs.androidx.security.crypto)
 
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
@@ -69,22 +68,25 @@ dependencies {
     implementation(libs.glide)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.paging.runtime.ktx)
-    testImplementation(libs.mockito.core)
-    testImplementation(libs.mockito.inline)
+    implementation(libs.androidx.room.runtime)
+    ksp(libs.room.compiler)
+    implementation(libs.androidx.camera.camera2)
+    implementation(libs.camera.lifecycle)
+    implementation(libs.camera.view)
 
-    testImplementation("junit:junit:4.13.2")
-    testImplementation("org.mockito:mockito-core:3.11.2")
-    testImplementation("org.mockito:mockito-inline:3.11.2")
-    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.5.1")
-    testImplementation("androidx.arch.core:core-testing:2.1.0")
+
     testImplementation("androidx.paging:paging-common:3.1.1")
-//    // (Required) Writing and executing Unit Tests on the JUnit Platform
-//    testImplementation("org.junit.jupiter:junit-jupiter-api:5.10.0")
-//    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.10.0")
-//
-//    testImplementation("org.junit.jupiter:junit-jupiter-api:5.7.1")
-//    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.7.1")
-//    testImplementation("org.junit.jupiter:junit-jupiter-params:5.7.1")
-//    testImplementation("junit:junit:4.13.2")
-//    testRuntimeOnly("org.junit.vintage:junit-vintage-engine:5.7.1")
+    implementation("androidx.room:room-paging:2.6.1")
+    implementation("androidx.test.ext:junit-ktx:1.2.0")
+    testImplementation("androidx.arch.core:core-testing:2.2.0")
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.3")
+    testImplementation("org.mockito:mockito-core:5.6.0")
+    testImplementation("org.mockito:mockito-inline:5.2.0")
+    androidTestImplementation("androidx.arch.core:core-testing:2.2.0")
+    androidTestImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.3")
+    testImplementation("junit:junit:4.13.2")
+    androidTestImplementation("androidx.test.ext:junit:1.2.0")
+    androidTestImplementation("androidx.test.espresso:espresso-core:3.6.0")
+
+
 }
